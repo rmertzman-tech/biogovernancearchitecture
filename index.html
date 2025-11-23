@@ -1,47 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
-  <title>FAIM-QIRF Demo • Ethics & Epistemic Justice</title>
-  <meta name="color-scheme" content="light only" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  >
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body { height: 100%; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .chip { @apply text-xs px-2 py-1 rounded-full bg-gray-100; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Biological Architecture of Ethical Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-  <header class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="#/home" class="font-bold text-lg">FAIM-QIRF • Demo</a>
-      <nav class="flex gap-3 text-sm">
-        <a class="hover:underline" href="#/playground">Playground</a>
-        <a class="hover:underline" href="#/philosophers">Philosophers</a>
-        <a class="hover:underline" href="#/labs">Injustice Labs</a>
-        <a class="hover:underline" href="#/repair">Repair</a>
-        <a class="hover:underline" href="#/about">About</a>
-      </nav>
-    </div>
-  </header>
+<body class="bg-slate-50 text-slate-800 h-screen flex overflow-hidden">
 
-  <main id="app" class="max-w-7xl mx-auto px-4 py-6"></main>
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-slate-900 text-white flex flex-col h-full shrink-0">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="text-xl font-bold leading-tight text-teal-400">Bio-Governance<br><span class="text-white font-light">Architect</span></h1>
+            <p class="text-xs text-slate-400 mt-2">Polycentric Federation Teaching Tool</p>
+        </div>
+        
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button onclick="showModule('intro')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn active" id="btn-intro">
+                        <span class="text-sm font-semibold">0. Introduction</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showModule('biology')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-biology">
+                        <span class="text-sm font-semibold">I. Biological Reality</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showModule('mismatch')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-mismatch">
+                        <span class="text-sm font-semibold">II. Social Mismatch</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showModule('solution')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-solution">
+                        <span class="text-sm font-semibold">III. Horizontal Solution</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showModule('mechanisms')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-mechanisms">
+                        <span class="text-sm font-semibold">IV. Mechanisms</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showModule('simulation')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-simulation">
+                        <span class="text-sm font-semibold text-teal-300">★ Simulation Lab</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
 
-  <footer class="border-t mt-10">
-    <div class="max-w-7xl mx-auto px-4 py-6 text-xs text-gray-500">
-      Demo is stateless. Use Export/Import to share a configuration. No tracking, no cookies.
-    </div>
-  </footer>
+        <div class="p-6 border-t border-slate-700">
+            <div class="text-xs text-slate-500">Based on the works of Sapolsky, Levin, & Clark.</div>
+        </div>
+    </aside>
 
-  <script type="module" src="./app/main.js"></script>
+    <!-- Main Content Area -->
+    <main class="flex-1 h-full overflow-y-auto bg-white relative">
+        
+        <!-- Module: Introduction -->
+        <section id="intro" class="module p-12 max-w-4xl mx-auto fade-in">
+            <header class="mb-10">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">The Biological Imperative for Justice</h2>
+                <div class="h-1 w-20 bg-teal-500 rounded"></div>
+            </header>
+            
+            <div class="prose prose-lg text-slate-600">
+                <p class="lead text-xl">
+                    The quest for human flourishing is not merely philosophical; it is a <strong>biological imperative</strong>. To build a just society, we must understand the organism we are governing.
+                </p>
+                <p>
+                    This interactive course connects three distinct fields into a single "Survival Architecture":
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
+                        <div class="text-3xl mb-2">🧠</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Biology</h3>
+                        <p class="text-sm">Robert Sapolsky's work on stress, the Prefrontal Cortex (PFC), and cortisol neurotoxicity.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
+                        <div class="text-3xl mb-2">🔮</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Psychology</h3>
+                        <p class="text-sm">Predictive Processing, the Identity Kernel, and Temporal Coherence.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
+                        <div class="text-3xl mb-2">🏛️</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Sociology</h3>
+                        <p class="text-sm">The Polycentric Federation as a "Social Immune System."</p>
+                    </div>
+                </div>
+
+                <div class="bg-teal-50 border-l-4 border-teal-500 p-4 italic">
+                    "The Federation is not just good policy—it is <strong>Bio-Compatible Governance</strong>."
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <button onclick="showModule('biology')" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition-colors font-semibold shadow-lg">Begin Learning Journey &rarr;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module: Biological Reality -->
+        <section id="biology" class="module hidden p-12 max-w-4xl mx-auto fade-in">
+            <header class="mb-8">
+                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part I</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">The Fragile Substrate of Agency</h2>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+                <div class="prose">
+                    <p>We begin with a hard truth: <strong>Ethical agency is physically fragile.</strong> It relies on the <span class="text-teal-600 font-semibold cursor-help" title="The executive center of the brain responsible for planning and impulse control.">Prefrontal Cortex (PFC)</span>.</p>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-600">
+                        <li><strong>Dorsolateral PFC:</strong> Planning & Consequences.</li>
+                        <li><strong>Ventromedial PFC:</strong> Integration with Identity & Values.</li>
+                    </ul>
+                    <p class="mt-4">
+                        <strong>The Enemy:</strong> Chronic stress, specifically "responsibility without control," floods the brain with <span class="text-red-500 font-bold">Cortisol</span>.
+                    </p>
+                </div>
+                
+                <!-- Interactive Brain Widget -->
+                <div class="bg-white rounded-xl shadow-xl p-6 border border-slate-200">
+                    <h3 class="font-bold text-center mb-4">The Cortisol Mechanism</h3>
+                    <div class="relative h-48 bg-slate-100 rounded-lg flex items-center justify-center overflow-hidden" id="brain-visual">
+                        <div id="pfc-region" class="w-24 h-24 rounded-full bg-teal-400 blur-md transition-all duration-1000"></div>
+                        <div class="absolute text-xs font-bold text-slate-700">PFC Connectivity</div>
+                    </div>
+                    
+                    <div class="mt-6 space-y-4">
+                        <div class="flex justify-between text-xs font-bold text-slate-500 uppercase">
+                            <span>Low Stress</span>
+                            <span>High Stress</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-red-500" id="stress-slider" oninput="updateBrain(this.value)">
+                        <p id="brain-status" class="text-center text-sm font-semibold text-teal-600">Status: Healthy, Connected, Ethical</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500 mb-8">
+                <h4 class="font-bold text-red-700 mb-2">The Result of Failure</h4>
+                <p class="text-sm text-red-800">
+                    When cortisol degrades the PFC, <strong>Temporal Coherence</strong> shatters. We lose the connection between our past values and our future selves. We become reactive and vulnerable.
+                </p>
+            </div>
+        </section>
+
+        <!-- Module: Social Mismatch -->
+        <section id="mismatch" class="module hidden p-12 max-w-4xl mx-auto fade-in">
+            <header class="mb-8">
+                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part II</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Institutional "Torture"</h2>
+            </header>
+
+            <div class="prose prose-lg text-slate-600 mb-8">
+                <p>Current hierarchical institutions are at war with our biology. They create the most damaging type of stress: <strong>Uncontrollable Stress</strong>.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-lg mb-2">The Structural Flaw</h3>
+                    <p class="text-sm text-slate-600">
+                        The nurse forced to understaff a ward. The engineer overruled on safety. This is "Responsibility (for outcomes) without Control (over means)."
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-lg mb-2 text-red-600">The Diagnosis: Moral Injury</h3>
+                    <p class="text-sm text-slate-600">
+                        A rupture in <strong>Predictive Processing</strong>. The brain predicts "I am a healer," but reality forces "I am neglecting patients." This massive prediction error fragments identity.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 text-white p-8 rounded-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <h3 class="text-xl font-bold mb-2">A Biological Violation</h3>
+                    <p class="text-slate-300">
+                        This state triggers a constant fight-or-flight response that never resolves. It systematically assaults the neural machinery of agency.
+                    </p>
+                </div>
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-teal-500 rounded-full opacity-20 blur-xl"></div>
+            </div>
+        </section>
+
+        <!-- Module: Horizontal Solution -->
+        <section id="solution" class="module hidden p-12 max-w-4xl mx-auto fade-in">
+            <header class="mb-8">
+                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part III</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">The Social Exoskeleton</h2>
+            </header>
+
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+                <div class="flex-1">
+                    <p class="text-lg text-slate-600 mb-4">
+                        We cannot solve biological fragility by asking people to be "tougher." We need a structural solution.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-1">1</span>
+                            <span class="text-sm text-slate-600"><strong>Social Exoskeleton:</strong> An external structure protecting internal agency.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-1">2</span>
+                            <span class="text-sm text-slate-600"><strong>Horizontal Contract:</strong> A network of peers (Profession) buffering against Vertical Hierarchy.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold mr-3 mt-1">3</span>
+                            <span class="text-sm text-slate-600"><strong>From Heroism to Efficacy:</strong> Making ethical action sustainable, not a martyrdom.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="flex-1 w-full">
+                    <!-- Diagram: Vertical vs Horizontal -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
+                        <div class="text-xs font-bold uppercase text-slate-400 mb-2">Comparative Architecture</div>
+                        <div class="flex justify-around">
+                            <div class="flex flex-col items-center">
+                                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-2xl mb-2">🏢</div>
+                                <div class="h-16 w-1 bg-red-200 mb-2"></div>
+                                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-sm">👤</div>
+                                <div class="text-xs mt-2 font-bold text-red-600">Vertical<br>Crushes Agency</div>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="text-2xl text-slate-300">&rarr;</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="flex space-x-2 mb-2">
+                                    <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-xs">👤</div>
+                                    <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-xs">👤</div>
+                                    <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-xs">👤</div>
+                                </div>
+                                <div class="h-1 w-full bg-teal-400 mb-2 rounded"></div>
+                                <div class="text-xs font-bold text-teal-600">Horizontal<br>Protects Agency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module: Mechanisms -->
+        <section id="mechanisms" class="module hidden p-12 max-w-4xl mx-auto fade-in">
+            <header class="mb-8">
+                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part IV</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">Restoring Homeostasis</h2>
+            </header>
+
+            <div class="space-y-6">
+                <!-- Mechanism 1 -->
+                <div class="group border border-slate-200 rounded-xl p-6 hover:border-teal-400 transition-colors cursor-pointer" onclick="toggleMech('mech1')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-slate-800">1. Conscience Gate</h3>
+                        <span class="text-teal-500 text-sm font-bold">Restoring Agency</span>
+                    </div>
+                    <div id="mech1" class="hidden mt-4 text-slate-600 text-sm border-t border-slate-100 pt-4">
+                        <p class="mb-2"><strong>Action:</strong> Worker activates "Stop Work Authority."</p>
+                        <p><strong>Biological Effect:</strong> Dampens cortisol spike. Transforms "toxic stress" (helplessness) into "challenge stress" (agency). Keeps PFC online.</p>
+                    </div>
+                </div>
+
+                <!-- Mechanism 2 -->
+                <div class="group border border-slate-200 rounded-xl p-6 hover:border-teal-400 transition-colors cursor-pointer" onclick="toggleMech('mech2')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-slate-800">2. Sortition Panel</h3>
+                        <span class="text-purple-500 text-sm font-bold">Restoring Connection</span>
+                    </div>
+                    <div id="mech2" class="hidden mt-4 text-slate-600 text-sm border-t border-slate-100 pt-4">
+                        <p class="mb-2"><strong>Action:</strong> Randomly selected peers review the concern.</p>
+                        <p><strong>Biological Effect:</strong> Triggers <strong>Oxytocin</strong>. Counteracts isolation. Signals "You are part of the tribe," resolving the Prediction Error of moral injury.</p>
+                    </div>
+                </div>
+
+                <!-- Mechanism 3 -->
+                <div class="group border border-slate-200 rounded-xl p-6 hover:border-teal-400 transition-colors cursor-pointer" onclick="toggleMech('mech3')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-slate-800">3. FHRI & Bond Ratings</h3>
+                        <span class="text-orange-500 text-sm font-bold">Restoring Feedback</span>
+                    </div>
+                    <div id="mech3" class="hidden mt-4 text-slate-600 text-sm border-t border-slate-100 pt-4">
+                        <p class="mb-2"><strong>Action:</strong> Turnover triggers financial penalty.</p>
+                        <p><strong>Biological Effect:</strong> Acts as a <strong>Nociceptor (Pain Receptor)</strong>. Forces the bureaucracy to "recoil" from harmful practices before tissue damage (systemic collapse) occurs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module: Simulation Lab -->
+        <section id="simulation" class="module hidden p-12 max-w-4xl mx-auto fade-in bg-slate-900 min-h-full text-white">
+            <header class="mb-8 border-b border-slate-700 pb-4">
+                <h2 class="text-3xl font-bold text-teal-400">The Federation Simulator</h2>
+                <p class="text-slate-400">Test the Survival Architecture against Systemic Stress.</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Control Panel -->
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                    <h3 class="text-sm font-bold uppercase text-slate-400 mb-4">Stressors</h3>
+                    
+                    <div class="mb-4">
+                        <label class="text-xs font-bold block mb-1">Institutional Pressure</label>
+                        <input type="range" id="sim-pressure" min="0" max="100" value="50" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-red-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="text-xs font-bold block mb-1">Isolation Level</label>
+                        <input type="range" id="sim-isolation" min="0" max="100" value="50" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-500">
+                    </div>
+
+                    <hr class="border-slate-700 my-4">
+
+                    <h3 class="text-sm font-bold uppercase text-teal-400 mb-4">Federation Defenses</h3>
+                    
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm">Conscience Gate</span>
+                        <button id="btn-gate" onclick="toggleDefense('gate')" class="bg-slate-700 px-3 py-1 rounded text-xs font-bold hover:bg-teal-600 transition">OFF</button>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm">Sortition Panel</span>
+                        <button id="btn-panel" onclick="toggleDefense('panel')" class="bg-slate-700 px-3 py-1 rounded text-xs font-bold hover:bg-purple-600 transition">OFF</button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">Financial Nociceptor</span>
+                        <button id="btn-finance" onclick="toggleDefense('finance')" class="bg-slate-700 px-3 py-1 rounded text-xs font-bold hover:bg-orange-600 transition">OFF</button>
+                    </div>
+                </div>
+
+                <!-- Simulation Output -->
+                <div class="md:col-span-2 bg-slate-800 p-6 rounded-xl border border-slate-700 flex flex-col items-center justify-center">
+                    
+                    <!-- Agent State Visual -->
+                    <div class="relative w-48 h-48 mb-6">
+                        <div id="sim-agent" class="w-full h-full rounded-full bg-teal-500 flex items-center justify-center transition-all duration-700 shadow-[0_0_30px_rgba(20,184,166,0.5)]">
+                            <span id="sim-agent-text" class="font-bold text-2xl">Agency</span>
+                        </div>
+                    </div>
+
+                    <!-- Metrics -->
+                    <div class="grid grid-cols-3 gap-4 w-full">
+                        <div class="text-center bg-slate-900 p-3 rounded">
+                            <div class="text-xs text-slate-400">Cortisol</div>
+                            <div id="metric-cortisol" class="text-xl font-bold text-red-400">Low</div>
+                        </div>
+                        <div class="text-center bg-slate-900 p-3 rounded">
+                            <div class="text-xs text-slate-400">PFC Status</div>
+                            <div id="metric-pfc" class="text-xl font-bold text-teal-400">Online</div>
+                        </div>
+                        <div class="text-center bg-slate-900 p-3 rounded">
+                            <div class="text-xs text-slate-400">Coherence</div>
+                            <div id="metric-coherence" class="text-xl font-bold text-white">Stable</div>
+                        </div>
+                    </div>
+
+                    <div id="sim-message" class="mt-6 text-sm text-slate-300 text-center h-10">
+                        System stable. Agent retains capacity for ethical reasoning.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Navigation Logic
+        function showModule(moduleId) {
+            // Hide all modules
+            document.querySelectorAll('.module').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected module
+            const selected = document.getElementById(moduleId);
+            selected.classList.remove('hidden');
+            
+            // Reset animation
+            selected.classList.remove('fade-in');
+            void selected.offsetWidth; // trigger reflow
+            selected.classList.add('fade-in');
+
+            // Update Sidebar State
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-800', 'border-l-4', 'border-teal-400');
+            });
+            const activeBtn = document.getElementById('btn-' + moduleId);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-slate-800', 'border-l-4', 'border-teal-400');
+            }
+        }
+
+        // Mechanism Accordion
+        function toggleMech(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Brain Visualization Logic
+        function updateBrain(val) {
+            const pfc = document.getElementById('pfc-region');
+            const status = document.getElementById('brain-status');
+            
+            if (val < 30) {
+                pfc.className = "w-24 h-24 rounded-full bg-teal-400 blur-md transition-all duration-1000 shadow-[0_0_20px_rgba(45,212,191,0.6)]";
+                status.textContent = "Status: Healthy, Connected, Ethical";
+                status.className = "text-center text-sm font-semibold text-teal-600";
+            } else if (val < 70) {
+                pfc.className = "w-20 h-20 rounded-full bg-yellow-400 blur-sm transition-all duration-1000";
+                status.textContent = "Status: Stressed, Reactive, Narrow Focus";
+                status.className = "text-center text-sm font-semibold text-yellow-600";
+            } else {
+                pfc.className = "w-12 h-12 rounded-full bg-red-500 blur-none transition-all duration-1000 animate-pulse";
+                status.textContent = "Status: Toxic Stress, PFC Offline, Moral Injury";
+                status.className = "text-center text-sm font-bold text-red-600";
+            }
+        }
+
+        // Simulation Logic
+        let defenses = {
+            gate: false,
+            panel: false,
+            finance: false
+        };
+
+        function toggleDefense(type) {
+            defenses[type] = !defenses[type];
+            const btn = document.getElementById('btn-' + type);
+            
+            if(defenses[type]) {
+                btn.textContent = "ON";
+                btn.classList.remove('bg-slate-700');
+                if(type === 'gate') btn.classList.add('bg-teal-600');
+                if(type === 'panel') btn.classList.add('bg-purple-600');
+                if(type === 'finance') btn.classList.add('bg-orange-600');
+            } else {
+                btn.textContent = "OFF";
+                btn.className = "bg-slate-700 px-3 py-1 rounded text-xs font-bold hover:bg-slate-600 transition";
+            }
+            runSimulation();
+        }
+
+        // Listeners for sliders
+        document.getElementById('sim-pressure').addEventListener('input', runSimulation);
+        document.getElementById('sim-isolation').addEventListener('input', runSimulation);
+
+        function runSimulation() {
+            const pressure = parseInt(document.getElementById('sim-pressure').value);
+            const isolation = parseInt(document.getElementById('sim-isolation').value);
+            
+            // Calculate effective stress
+            let stress = pressure;
+            let effectiveIsolation = isolation;
+
+            // Apply Defenses
+            if (defenses.gate) stress -= 40; // Gate restores control
+            if (defenses.panel) effectiveIsolation -= 50; // Panel restores connection
+            if (defenses.finance) stress -= 20; // Feedback reduces systemic pressure
+
+            // Clamp values
+            if (stress < 0) stress = 0;
+            if (effectiveIsolation < 0) effectiveIsolation = 0;
+
+            // Determine State
+            const totalLoad = stress + effectiveIsolation;
+            const agent = document.getElementById('sim-agent');
+            const text = document.getElementById('sim-agent-text');
+            const cortisol = document.getElementById('metric-cortisol');
+            const pfc = document.getElementById('metric-pfc');
+            const coherence = document.getElementById('metric-coherence');
+            const msg = document.getElementById('sim-message');
+
+            if (totalLoad < 50) {
+                // Healthy State
+                agent.className = "w-full h-full rounded-full bg-teal-500 flex items-center justify-center transition-all duration-700 shadow-[0_0_30px_rgba(20,184,166,0.5)]";
+                text.textContent = "Agency";
+                cortisol.textContent = "Regulated"; cortisol.className = "text-xl font-bold text-teal-400";
+                pfc.textContent = "Online"; pfc.className = "text-xl font-bold text-teal-400";
+                coherence.textContent = "High"; coherence.className = "text-xl font-bold text-white";
+                msg.textContent = defenses.gate ? "Conscience Gate active. Control retained. Agency preserved." : "System stable.";
+            } else if (totalLoad < 100) {
+                // Stressed State
+                agent.className = "w-3/4 h-3/4 rounded-full bg-yellow-500 flex items-center justify-center transition-all duration-700 animate-pulse";
+                text.textContent = "Strain";
+                cortisol.textContent = "Elevated"; cortisol.className = "text-xl font-bold text-yellow-400";
+                pfc.textContent = "Impaired"; pfc.className = "text-xl font-bold text-yellow-400";
+                coherence.textContent = "At Risk"; coherence.className = "text-xl font-bold text-yellow-100";
+                msg.textContent = "Warning: High pressure. Moral Injury risk increasing.";
+            } else {
+                // Collapsed State
+                agent.className = "w-1/2 h-1/2 rounded-full bg-red-600 flex items-center justify-center transition-all duration-700";
+                text.textContent = "Collapse";
+                cortisol.textContent = "Toxic"; cortisol.className = "text-xl font-bold text-red-500";
+                pfc.textContent = "Offline"; pfc.className = "text-xl font-bold text-red-500";
+                coherence.textContent = "Broken"; coherence.className = "text-xl font-bold text-red-200";
+                msg.textContent = "CRITICAL FAILURE. Identity fragmentation. Systemic collapse.";
+            }
+        }
+    </script>
 </body>
 </html>
