@@ -102,13 +102,18 @@
                     </button>
                 </li>
                 <li>
+                    <button onclick="showModule('moral')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-moral">
+                        <span class="text-sm font-semibold text-yellow-400">III. The Moral Mandate</span>
+                    </button>
+                </li>
+                <li>
                     <button onclick="showModule('solution')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-solution">
-                        <span class="text-sm font-semibold">III. Horizontal Solution</span>
+                        <span class="text-sm font-semibold">IV. Horizontal Solution</span>
                     </button>
                 </li>
                 <li>
                     <button onclick="showModule('mechanisms')" class="w-full text-left px-6 py-3 hover:bg-slate-800 focus:bg-slate-800 focus:border-l-4 focus:border-teal-400 transition-colors nav-btn" id="btn-mechanisms">
-                        <span class="text-sm font-semibold">IV. Mechanisms</span>
+                        <span class="text-sm font-semibold">V. Mechanisms</span>
                     </button>
                 </li>
                 <li>
@@ -121,7 +126,7 @@
 
         <div class="p-6 border-t border-slate-700">
             <button onclick="openEssayModal()" class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white py-2 px-4 rounded-lg text-xs font-bold transition-colors border border-slate-600">
-                <span>📄</span> Read Full Essay
+                <span>📄</span> Read Full Essays
             </button>
             <div class="text-xs text-slate-500 mt-4 text-center">Based on Sapolsky, Levin, & Clark.</div>
         </div>
@@ -142,19 +147,24 @@
                     The quest for human flourishing is not merely philosophical; it is a <strong>biological imperative</strong>. To build a just society, we must understand the organism we are governing.
                 </p>
                 <p>
-                    This interactive course connects three distinct fields into a single "Survival Architecture":
+                    This interactive course connects distinct fields into a single "Survival Architecture":
                 </p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-10">
                     <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
                         <div class="text-3xl mb-2">🧠</div>
                         <h3 class="text-lg font-bold text-slate-800 mb-2">Biology</h3>
-                        <p class="text-sm">Robert Sapolsky's work on stress, the Prefrontal Cortex (PFC), and cortisol neurotoxicity.</p>
+                        <p class="text-sm">Sapolsky's work on stress, PFC degradation, and cortisol neurotoxicity.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
+                        <div class="text-3xl mb-2">⚖️</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Ethics</h3>
+                        <p class="text-sm">Global traditions condemning harm to human dignity and intellect.</p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
                         <div class="text-3xl mb-2">🔮</div>
                         <h3 class="text-lg font-bold text-slate-800 mb-2">Psychology</h3>
-                        <p class="text-sm">Predictive Processing, the Identity Kernel, and Temporal Coherence.</p>
+                        <p class="text-sm">Predictive Processing and Temporal Coherence.</p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 interactive-card">
                         <div class="text-3xl mb-2">🏛️</div>
@@ -166,7 +176,7 @@
                 <div class="flex gap-4 justify-center mt-8">
                     <button onclick="showModule('biology')" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition-colors font-semibold shadow-lg">Begin Learning Journey &rarr;</button>
                     <button onclick="openEssayModal()" class="bg-white text-slate-900 border border-slate-300 px-8 py-3 rounded-full hover:bg-slate-50 transition-colors font-semibold shadow-sm flex items-center gap-2">
-                        <span>📄</span> Read Full Essay
+                        <span>📄</span> Read Full Essays
                     </button>
                 </div>
             </div>
@@ -283,10 +293,59 @@
             </div>
         </section>
 
+        <!-- Module: The Moral Mandate (NEW) -->
+        <section id="moral" class="module hidden p-12 max-w-4xl mx-auto fade-in">
+            <header class="mb-8">
+                <span class="text-yellow-600 font-bold tracking-wide uppercase text-sm">Part III</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-1">The Moral Mandate</h2>
+                <p class="text-lg text-slate-600 mt-2">Global ethical traditions converge: Systemic harm to human cognition is a violation of sacred and moral law.</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <button onclick="showTradition('catholic')" class="p-4 bg-white border border-slate-200 rounded-lg hover:border-yellow-500 hover:bg-yellow-50 transition text-left">
+                    <div class="font-bold text-slate-800">Catholic Social Teaching</div>
+                    <div class="text-xs text-slate-500 mt-1">Human Dignity & Natural Law</div>
+                </button>
+                <button onclick="showTradition('islamic')" class="p-4 bg-white border border-slate-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition text-left">
+                    <div class="font-bold text-slate-800">Islamic Ethics</div>
+                    <div class="text-xs text-slate-500 mt-1">Zulm (Oppression) & Hifz al-Aql</div>
+                </button>
+                <button onclick="showTradition('confucian')" class="p-4 bg-white border border-slate-200 rounded-lg hover:border-red-500 hover:bg-red-50 transition text-left">
+                    <div class="font-bold text-slate-800">Confucianism</div>
+                    <div class="text-xs text-slate-500 mt-1">Ren (Benevolence) & Harmony</div>
+                </button>
+                <button onclick="showTradition('ubuntu')" class="p-4 bg-white border border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition text-left">
+                    <div class="font-bold text-slate-800">Ubuntu</div>
+                    <div class="text-xs text-slate-500 mt-1">Communal Personhood</div>
+                </button>
+                <button onclick="showTradition('indigenous')" class="p-4 bg-white border border-slate-200 rounded-lg hover:border-teal-500 hover:bg-teal-50 transition text-left">
+                    <div class="font-bold text-slate-800">Indigenous Knowledge</div>
+                    <div class="text-xs text-slate-500 mt-1">Holistic Balance & Relation</div>
+                </button>
+                <button onclick="showTradition('enlightenment')" class="p-4 bg-white border border-slate-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left">
+                    <div class="font-bold text-slate-800">Enlightenment/Liberal</div>
+                    <div class="text-xs text-slate-500 mt-1">Rights & Rational Agency</div>
+                </button>
+            </div>
+
+            <div id="tradition-content" class="bg-slate-50 p-8 rounded-xl border border-slate-200 min-h-[200px]">
+                <div class="text-center text-slate-500 mt-10">
+                    <p>Select a tradition above to see its perspective on chronic stress and neurological harm.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                <h4 class="font-bold text-yellow-800 mb-2">The Convergence</h4>
+                <p class="text-sm text-yellow-900">
+                    Despite differing metaphysics, all traditions agree: <strong>Institutions that degrade human cognitive capacity are illegitimate.</strong> Whether viewed as sin, injustice, disharmony, or violation of rights, the mandate is clear: We must build systems that protect the human person.
+                </p>
+            </div>
+        </section>
+
         <!-- Module: Horizontal Solution -->
         <section id="solution" class="module hidden p-12 max-w-4xl mx-auto fade-in">
             <header class="mb-8">
-                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part III</span>
+                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part IV</span>
                 <h2 class="text-3xl font-bold text-slate-900 mt-1">The Social Exoskeleton</h2>
             </header>
 
@@ -357,7 +416,7 @@
         <!-- Module: Mechanisms -->
         <section id="mechanisms" class="module hidden p-12 max-w-4xl mx-auto fade-in">
             <header class="mb-8">
-                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part IV</span>
+                <span class="text-teal-600 font-bold tracking-wide uppercase text-sm">Part V</span>
                 <h2 class="text-3xl font-bold text-slate-900 mt-1">Restoring Homeostasis</h2>
             </header>
 
@@ -499,6 +558,103 @@
     </div>
 
     <script>
+        // TRADITION CONTENT
+        const traditions = {
+            catholic: {
+                title: "Catholic Social Teaching",
+                content: `
+                    <h4 class="font-bold text-lg text-yellow-800">Human Dignity & The Common Good</h4>
+                    <p class="mt-2">In Catholic ethics, work that disregards human limits is a violation of <strong>Human Dignity</strong>. </p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Dehumanization:</strong> Pushing employees beyond capacity reduces persons to "means of profit."</li>
+                        <li><strong>Structural Sin:</strong> Institutions that create chronic stress are structurally sinful because they assault the integrity of the person (Imago Dei).</li>
+                        <li><strong>Duty of Remedy:</strong> Leaders have a moral obligation to change policies (e.g., ensure rest, living wages) to protect the "whole person."</li>
+                    </ul>
+                `
+            },
+            islamic: {
+                title: "Islamic Ethics",
+                content: `
+                    <h4 class="font-bold text-lg text-green-800">Zulm (Oppression) & Preservation of Intellect</h4>
+                    <p class="mt-2">Chronic stress imposed by systems is viewed as <strong>Zulm (Oppression)</strong>.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Hifz al-Aql:</strong> The protection of the intellect is a primary objective of Sharia. Stress that damages the brain violates this.</li>
+                        <li><strong>Amanah (Trust):</strong> Leadership is a trust. Causing harm to subordinates is a betrayal of that trust.</li>
+                        <li><strong>No Harm:</strong> The principle "La darar wa la dirar" (No harm and no reciprocating harm) mandates the removal of stress-inducing structures.</li>
+                    </ul>
+                `
+            },
+            confucian: {
+                title: "Confucianism",
+                content: `
+                    <h4 class="font-bold text-lg text-red-800">Ren (Benevolence) & Social Harmony</h4>
+                    <p class="mt-2">Stress is a symptom of <strong>Social Disharmony</strong> and a failure of leadership.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Benevolent Governance:</strong> Rulers/Managers must care for subordinates like family. Stress indicates a lack of <em>Ren</em>.</li>
+                        <li><strong>Balance:</strong> Overwork violates the "Doctrine of the Mean." It destroys the capacity for filial and social duties.</li>
+                        <li><strong>Rectification:</strong> The remedy is to restore order through humane policies and virtuous leadership.</li>
+                    </ul>
+                `
+            },
+            ubuntu: {
+                title: "Ubuntu",
+                content: `
+                    <h4 class="font-bold text-lg text-orange-800">"I Am Because We Are"</h4>
+                    <p class="mt-2">Harm to one is harm to the community. Chronic stress fractures the <strong>Social Body</strong>.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Interdependence:</strong> Systemic stress robs the community of an individual's full participation.</li>
+                        <li><strong>Communal Care:</strong> The obligation to heal is collective. No one should suffer alone.</li>
+                        <li><strong>Restorative Justice:</strong> The remedy is to heal broken relationships between workers and institutions, not just punish.</li>
+                    </ul>
+                `
+            },
+            indigenous: {
+                title: "Indigenous Knowledge",
+                content: `
+                    <h4 class="font-bold text-lg text-teal-800">Holistic Balance & Relation</h4>
+                    <p class="mt-2">Chronic stress is a <strong>"Soul Wound"</strong> resulting from disconnection and imbalance.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>All My Relations:</strong> Harming people harms the web of life. Corporate greed is a form of spiritual sickness (Windigo).</li>
+                        <li><strong>Seventh Generation:</strong> We must not create systems that damage the health of future generations (intergenerational trauma).</li>
+                        <li><strong>Restoration:</strong> Healing requires reconnecting with community, land, and spirit to restore balance.</li>
+                    </ul>
+                `
+            },
+            enlightenment: {
+                title: "Enlightenment Liberalism",
+                content: `
+                    <h4 class="font-bold text-lg text-blue-800">Rights & Rational Agency</h4>
+                    <p class="mt-2">Chronic stress infringes on the <strong>Rights to Life, Liberty, and Health</strong>.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Autonomy:</strong> Stress that degrades the PFC undermines the capacity for rational choice and autonomy.</li>
+                        <li><strong>Social Contract:</strong> Governments are instituted to protect safety. Systemic stress is a breach of that contract.</li>
+                        <li><strong>Duty of Care:</strong> Institutions have a duty not to harm individuals' capacity to pursue their own happiness.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showTradition(key) {
+            const container = document.getElementById('tradition-content');
+            const data = traditions[key];
+            
+            // Fade out
+            container.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                container.innerHTML = data.content;
+                container.style.opacity = '1';
+                container.className = `p-8 rounded-xl border transition-all duration-300 min-h-[200px] ${
+                    key === 'catholic' ? 'bg-yellow-50 border-yellow-200' :
+                    key === 'islamic' ? 'bg-green-50 border-green-200' :
+                    key === 'confucian' ? 'bg-red-50 border-red-200' :
+                    key === 'ubuntu' ? 'bg-orange-50 border-orange-200' :
+                    key === 'indigenous' ? 'bg-teal-50 border-teal-200' :
+                    'bg-blue-50 border-blue-200'
+                }`;
+            }, 150);
+        }
+
         // ESSAY CONTENT
         const essayText = `
 <h3>Introduction: The Biological Imperative for Justice</h3>
@@ -533,7 +689,7 @@
 <p>We cannot solve this biological problem by asking people to be "tougher." That is like asking a bone to be stronger after it has been broken. We need a structural solution.</p>
 <ul>
     <li><strong>The Concept:</strong> We must build a <strong>"Social Exoskeleton"</strong>—an external structure that supports and protects the fragile internal agency of the individual.</li>
-    <li><strong>The Architecture:</strong> The <strong>Polycentric Federation</strong> provides this exoskeleton through the <strong>Horizontal Social Contract</strong>. Instead of a vertical hierarchy that extracts value and imposes stress, the Federation creates a network of peers (the Profession) that buffers the individual against the pressures of the State and Market.</li>
+    <li><strong>The Architecture:</strong> The <strong>Polycentric Federation</strong> provides this exoskeleton through the <strong>Horizontal Social Contract</strong>. Instead of a vertical hierarchy that extracts value and imposes stress, the Federation creates a network of peers (the Profession) that buffers the individual against the pressures of the State and Market.
     <li><strong>The Shift:</strong> This moves us from a reliance on individual <strong>"Moral Heroism"</strong> (which is biologically expensive and rare) to <strong>"Moral Efficacy"</strong> (which is sustainable and scalable).</li>
 </ul>
 
