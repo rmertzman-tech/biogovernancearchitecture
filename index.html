@@ -33,6 +33,26 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
+        /* Quiz Styles */
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            background-color: #f0f9ff;
+            border-color: #0d9488;
+        }
+        .quiz-option.correct {
+            background-color: #d1fae5;
+            border-color: #059669;
+            color: #065f46;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #dc2626;
+            color: #991b1b;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -188,6 +208,20 @@
                     When cortisol degrades the PFC, <strong>Temporal Coherence</strong> shatters. We lose the connection between our past values and our future selves. We become reactive and vulnerable.
                 </p>
             </div>
+
+            <!-- Knowledge Check 1 -->
+            <div class="mt-12 border-t border-slate-200 pt-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">🧠 Knowledge Check</h3>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm" id="quiz-1">
+                    <p class="font-semibold mb-4">Which type of stress is most damaging to the Prefrontal Cortex?</p>
+                    <div class="space-y-2">
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(1, false, this)">A. Short-term acute stress (e.g., a deadline)</div>
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(1, true, this)">B. Chronic uncontrollable stress (Responsibility without Control)</div>
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(1, false, this)">C. Physical exercise stress</div>
+                    </div>
+                    <div class="mt-4 hidden feedback text-sm font-bold"></div>
+                </div>
+            </div>
         </section>
 
         <!-- Module: Social Mismatch -->
@@ -224,6 +258,20 @@
                     </p>
                 </div>
                 <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-teal-500 rounded-full opacity-20 blur-xl"></div>
+            </div>
+
+            <!-- Knowledge Check 2 -->
+            <div class="mt-12 border-t border-slate-200 pt-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">🔮 Knowledge Check</h3>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm" id="quiz-2">
+                    <p class="font-semibold mb-4">What causes "Moral Injury" in the Predictive Processing framework?</p>
+                    <div class="space-y-2">
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(2, false, this)">A. Working too many hours</div>
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(2, true, this)">B. A massive Prediction Error between one's Identity Kernel ("I am good") and forced actions ("I am doing harm")</div>
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(2, false, this)">C. Low wages</div>
+                    </div>
+                    <div class="mt-4 hidden feedback text-sm font-bold"></div>
+                </div>
             </div>
         </section>
 
@@ -280,6 +328,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Check 3 -->
+            <div class="mt-12 border-t border-slate-200 pt-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">🏛️ Knowledge Check</h3>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm" id="quiz-3">
+                    <p class="font-semibold mb-4">What is the primary function of the "Social Exoskeleton"?</p>
+                    <div class="space-y-2">
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(3, true, this)">A. To provide structural support that protects internal agency from crushing external pressure</div>
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(3, false, this)">B. To make employees work harder</div>
+                        <div class="p-3 border rounded-lg quiz-option" onclick="checkAnswer(3, false, this)">C. To eliminate all hierarchy completely</div>
+                    </div>
+                    <div class="mt-4 hidden feedback text-sm font-bold"></div>
                 </div>
             </div>
         </section>
@@ -457,6 +519,28 @@
                 pfc.className = "w-12 h-12 rounded-full bg-red-500 blur-none transition-all duration-1000 animate-pulse";
                 status.textContent = "Status: Toxic Stress, PFC Offline, Moral Injury";
                 status.className = "text-center text-sm font-bold text-red-600";
+            }
+        }
+
+        // Knowledge Check Logic
+        function checkAnswer(quizId, isCorrect, element) {
+            const quizBox = document.getElementById('quiz-' + quizId);
+            const feedback = quizBox.querySelector('.feedback');
+            const options = quizBox.querySelectorAll('.quiz-option');
+
+            // Reset options styling
+            options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.textContent = "✅ Correct! Well done.";
+                feedback.className = "mt-4 feedback text-sm font-bold text-teal-600 fade-in";
+                feedback.classList.remove('hidden');
+            } else {
+                element.classList.add('incorrect');
+                feedback.textContent = "❌ Incorrect. Try again.";
+                feedback.className = "mt-4 feedback text-sm font-bold text-red-500 fade-in";
+                feedback.classList.remove('hidden');
             }
         }
 
